@@ -14,13 +14,14 @@ class _MenuScreenState extends State<MenuScreen> {
     'Кофе с молоком': GlobalKey(),
     'Чай': GlobalKey(),
     'Авторские напитки': GlobalKey(),
+    'Десерты': GlobalKey(),
   };
   String _activeCategory = 'Черный кофе';
 
   void _scrollToCategory(String category) {
     final keyContext = _categoryKeys[category]?.currentContext;
     if (keyContext != null) {
-      Scrollable.ensureVisible(keyContext, duration: Duration(seconds: 1), curve: Curves.easeInOut);
+      Scrollable.ensureVisible(keyContext, duration: const Duration(seconds: 1), curve: Curves.easeInOut);
       setState(() {
         _activeCategory = category;
       });
@@ -28,17 +29,26 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   void _onScroll() {
-    for (var entry in _categoryKeys.entries) {
-      final keyContext = entry.value.currentContext;
+    double minDistance = double.infinity;
+    String closestCategory = _activeCategory;
+
+    _categoryKeys.forEach((category, key) {
+      final keyContext = key.currentContext;
       if (keyContext != null) {
         final box = keyContext.findRenderObject() as RenderBox;
-        if (box.localToGlobal(Offset.zero).dy < 150) {
-          setState(() {
-            _activeCategory = entry.key;
-          });
-          break;
-        }
+          final position = box.localToGlobal(Offset.zero).dy;
+          final distance = (position - kToolbarHeight).abs();
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestCategory = category;
+          }
       }
+    });
+
+    if (closestCategory != _activeCategory) {
+      setState(() {
+        _activeCategory = closestCategory;
+      });
     }
   }
 
@@ -61,14 +71,17 @@ class _MenuScreenState extends State<MenuScreen> {
     return Scaffold(
       appBar: AppBar(
         title: PreferredSize(
-          preferredSize: Size.fromHeight(48.0),
+          preferredSize: const Size.fromHeight(48.0),
           child: Container(
             alignment: Alignment.center,
-            child: SingleChildScrollView(
-              controller: _categoryScrollController,
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: _categoryKeys.keys.map((category) {
+            child: SizedBox(
+              height: 48.0,
+              child: ListView.builder(
+                controller: _categoryScrollController,
+                scrollDirection: Axis.horizontal,
+                itemCount: _categoryKeys.keys.length,
+                itemBuilder: (context, index) {
+                  String category = _categoryKeys.keys.elementAt(index);
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: GestureDetector(
@@ -76,8 +89,8 @@ class _MenuScreenState extends State<MenuScreen> {
                         _scrollToCategory(category);
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           _categoryScrollController.animateTo(
-                            _categoryKeys.keys.toList().indexOf(category) * 100.0,
-                            duration: Duration(milliseconds: 500),
+                            index * 100.0,
+                            duration: const Duration(milliseconds: 500),
                             curve: Curves.easeInOut,
                           );
                         });
@@ -88,20 +101,21 @@ class _MenuScreenState extends State<MenuScreen> {
                       ),
                     ),
                   );
-                }).toList(),
+                },
               ),
             ),
           ),
         ),
       ),
-      body: ListView(
+      body: CustomScrollView(
         controller: _scrollController,
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-        children: _categoryKeys.keys.map((category) {
-          return Padding(
+        slivers: _categoryKeys.keys.map((category) {
+          return SliverToBoxAdapter(
             key: _categoryKeys[category],
-            padding: const EdgeInsets.only(bottom: 16),
-            child: CoffeeCategory(title: category),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+              child: CoffeeCategory(title: category),
+            ),
           );
         }).toList(),
       ),

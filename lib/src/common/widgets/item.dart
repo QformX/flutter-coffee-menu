@@ -21,9 +21,9 @@ class _CoffeeItemState extends State<CoffeeItem> {
               height: 100,
               fit: BoxFit.contain,
             ),
-            SizedBox(height: 8),
-            Text('Олеато'),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
+            const Text('Олеато'),
+            const SizedBox(height: 8),
             _quantity == 0
                 ? ElevatedButton(
                     onPressed: () {
@@ -31,13 +31,13 @@ class _CoffeeItemState extends State<CoffeeItem> {
                         _quantity = 1;
                       });
                     },
-                    child: Text('139 руб'),
+                    child: const Text('139 руб'),
                   )
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.remove),
+                        icon: const Icon(Icons.remove),
                         onPressed: () {
                           setState(() {
                             if (_quantity > 1) {
@@ -50,7 +50,7 @@ class _CoffeeItemState extends State<CoffeeItem> {
                       ),
                       Text('$_quantity'),
                       IconButton(
-                        icon: Icon(Icons.add),
+                        icon: const Icon(Icons.add),
                         onPressed: () {
                           setState(() {
                             if (_quantity < 10) {
