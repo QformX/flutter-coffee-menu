@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_coffee_menu/src/common/widgets/category.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -28,14 +29,16 @@ class _MenuScreenState extends State<MenuScreen> {
     }
   }
 
-  void _onScroll() {
-    double minDistance = double.infinity;
-    String closestCategory = _activeCategory;
+void _onScroll() {
+  double minDistance = double.infinity;
+  String closestCategory = _activeCategory;
 
-    _categoryKeys.forEach((category, key) {
-      final keyContext = key.currentContext;
-      if (keyContext != null) {
-        final box = keyContext.findRenderObject() as RenderBox;
+  _categoryKeys.forEach((category, key) {
+    final keyContext = key.currentContext;
+    if (keyContext != null) {
+      final renderObject = keyContext.findRenderObject();
+      if (renderObject is RenderSliverToBoxAdapter) {
+        final box = renderObject.child as RenderBox;
           final position = box.localToGlobal(Offset.zero).dy;
           final distance = (position - kToolbarHeight).abs();
           if (distance < minDistance) {
@@ -43,15 +46,14 @@ class _MenuScreenState extends State<MenuScreen> {
             closestCategory = category;
           }
       }
-    });
-
-    if (closestCategory != _activeCategory) {
-      setState(() {
-        _activeCategory = closestCategory;
-      });
     }
-  }
+  });
 
+  setState(() {
+    _activeCategory = closestCategory;
+  });
+}
+  
   @override
   void initState() {
     super.initState();
