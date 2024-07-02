@@ -14,7 +14,6 @@ class CoffeeCategory extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
         GridView.builder(
@@ -26,7 +25,7 @@ class CoffeeCategory extends StatelessWidget {
             crossAxisSpacing: 8,
             childAspectRatio: 0.7,
           ),
-          itemCount: items.length, // Количество элементов в категории
+          itemCount: items.length,
           itemBuilder: (context, index) {
             return CoffeeItem(itemData: items[index]);
           },

@@ -212,7 +212,6 @@ void _scrollToCategory(String category) {
                       },
                       child: Chip(
                         label: Text(category),
-                        backgroundColor: _activeCategory == category ? Colors.blue.shade100 : Colors.grey.shade200,
                       ),
                     ),
                   );
