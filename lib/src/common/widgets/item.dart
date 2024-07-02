@@ -17,14 +17,16 @@ class _CoffeeItemState extends State<CoffeeItem> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.network(
-              'https://sun9-25.userapi.com/s/v1/ig2/k0Cv-yYsOKsysRRN0hXt0mnoLsuc3B_yiIlbOf6cNOtAqJ2nAFG56yd4PbdApD7qr5ZiJUDcKOMMoomNulpHONU9.jpg?size=200x200&quality=96&crop=0,134,531,531&ava=1',
+              'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
               height: 100,
               fit: BoxFit.contain,
             ),
             const SizedBox(height: 8),
             const Text('Олеато'),
             const SizedBox(height: 8),
-            _quantity == 0
+            SizedBox(
+            height: 48.0, // Устанавливаем фиксированную высоту
+            child: _quantity == 0
                 ? ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -60,7 +62,8 @@ class _CoffeeItemState extends State<CoffeeItem> {
                         },
                       ),
                     ],
-                  ),
+                )
+            ),
           ],
         ),
       ),
