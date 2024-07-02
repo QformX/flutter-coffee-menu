@@ -19,15 +19,18 @@ class _MenuScreenState extends State<MenuScreen> {
   };
   String _activeCategory = 'Черный кофе';
 
-  void _scrollToCategory(String category) {
-    final keyContext = _categoryKeys[category]?.currentContext;
-    if (keyContext != null) {
-      Scrollable.ensureVisible(keyContext, duration: const Duration(seconds: 1), curve: Curves.easeInOut);
-      setState(() {
-        _activeCategory = category;
-      });
-    }
+void _scrollToCategory(String category) {
+  final keyContext = _categoryKeys[category]?.currentContext;
+  if (keyContext != null) {
+    _scrollController.removeListener(_onScroll); // Удаление слушателя
+    Scrollable.ensureVisible(keyContext, duration: const Duration(seconds: 1), curve: Curves.easeInOut).then((_) {
+      _scrollController.addListener(_onScroll); // Добавление слушателя обратно
+    });
+    setState(() {
+      _activeCategory = category;
+    });
   }
+}
 
   void _onScroll() {
     double minDistance = double.infinity;
@@ -83,7 +86,7 @@ class _MenuScreenState extends State<MenuScreen> {
           child: Container(
             alignment: Alignment.center,
             child: SizedBox(
-              height: 48.0,
+              height: 36.0,
               child: ListView.builder(
                 controller: _categoryScrollController,
                 scrollDirection: Axis.horizontal,
