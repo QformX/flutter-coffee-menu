@@ -29,30 +29,38 @@ class _MenuScreenState extends State<MenuScreen> {
     }
   }
 
-void _onScroll() {
-  double minDistance = double.infinity;
-  String closestCategory = _activeCategory;
+  void _onScroll() {
+    double minDistance = double.infinity;
+    String closestCategory = _activeCategory;
 
-  _categoryKeys.forEach((category, key) {
-    final keyContext = key.currentContext;
-    if (keyContext != null) {
-      final renderObject = keyContext.findRenderObject();
-      if (renderObject is RenderSliverToBoxAdapter) {
-        final box = renderObject.child as RenderBox;
-          final position = box.localToGlobal(Offset.zero).dy;
-          final distance = (position - kToolbarHeight).abs();
-          if (distance < minDistance) {
-            minDistance = distance;
-            closestCategory = category;
+    _categoryKeys.forEach((category, key) {
+      final keyContext = key.currentContext;
+      if (keyContext != null) {
+        final renderObject = keyContext.findRenderObject();
+        if (renderObject is RenderSliverToBoxAdapter) {
+          final box = renderObject.child as RenderBox;
+          if (box != null) {
+            final position = box.localToGlobal(Offset.zero).dy;
+            final distance = (position - kToolbarHeight).abs();
+            if (distance < minDistance) {
+              minDistance = distance;
+              closestCategory = category;
+            }
           }
+        }
       }
-    }
-  });
+    });
 
-  setState(() {
-    _activeCategory = closestCategory;
-  });
-}
+    setState(() {
+      _activeCategory = closestCategory;
+      final index = _categoryKeys.keys.toList().indexOf(closestCategory);
+      _categoryScrollController.animateTo(
+        index * 100.0,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
   
   @override
   void initState() {
