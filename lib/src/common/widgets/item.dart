@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CoffeeItem extends StatefulWidget {
+  final CoffeeItemData itemData;
+
+  CoffeeItem({required this.itemData});
+
   @override
   _CoffeeItemState createState() => _CoffeeItemState();
 }
@@ -17,15 +21,15 @@ class _CoffeeItemState extends State<CoffeeItem> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.network(
-              'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+              widget.itemData.imageUrl,
               height: 100,
               fit: BoxFit.contain,
             ),
             const SizedBox(height: 8),
-            const Text('Олеато'),
+            Text(widget.itemData.name),
             const SizedBox(height: 8),
             SizedBox(
-            height: 48.0, // Устанавливаем фиксированную высоту
+            height: 40.0, // Устанавливаем фиксированную высоту
             child: _quantity == 0
                 ? ElevatedButton(
                     onPressed: () {
@@ -33,7 +37,7 @@ class _CoffeeItemState extends State<CoffeeItem> {
                         _quantity = 1;
                       });
                     },
-                    child: const Text('139 руб'),
+                    child: Text('${widget.itemData.price} руб'),
                   )
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -69,4 +73,12 @@ class _CoffeeItemState extends State<CoffeeItem> {
       ),
     );
   }
+}
+
+class CoffeeItemData {
+  final String imageUrl;
+  final String name;
+  final int price;
+
+  CoffeeItemData({required this.imageUrl, required this.name, required this.price});
 }

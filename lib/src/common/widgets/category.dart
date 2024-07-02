@@ -3,8 +3,9 @@ import 'package:flutter_coffee_menu/src/common/widgets/item.dart';
 
 class CoffeeCategory extends StatelessWidget {
   final String title;
+  final List<CoffeeItemData> items;
 
-  CoffeeCategory({super.key, required this.title});
+  CoffeeCategory({super.key, required this.title, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,9 @@ class CoffeeCategory extends StatelessWidget {
             crossAxisSpacing: 8,
             childAspectRatio: 0.7,
           ),
-          itemCount: 6, // Количество элементов в категории
+          itemCount: items.length, // Количество элементов в категории
           itemBuilder: (context, index) {
-            return CoffeeItem();
+            return CoffeeItem(itemData: items[index]);
           },
         ),
       ],
