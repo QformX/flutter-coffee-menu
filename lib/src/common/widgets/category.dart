@@ -5,7 +5,7 @@ class CoffeeCategory extends StatelessWidget {
   final String title;
   final List<CoffeeItemData> items;
 
-  CoffeeCategory({super.key, required this.title, required this.items});
+  CoffeeCategory({required this.title, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +14,9 @@ class CoffeeCategory extends StatelessWidget {
       children: [
         Text(
           title,
+          style: const TextStyle(
+            fontSize: 24,
+          ),
         ),
         const SizedBox(height: 8),
         GridView.builder(

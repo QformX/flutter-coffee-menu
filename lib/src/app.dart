@@ -19,122 +19,131 @@ class _MenuScreenState extends State<MenuScreen> {
     'Десерты': GlobalKey(),
   };
   final String defaultImageUrl = 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png';
+  final bool temp = true;
 
-    final Map<String, List<CoffeeItemData>> _categoryData = {
-    'Черный кофе': [
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Эспрессо',
-          price: 100),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Американо',
-          price: 120),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Ристретто',
-          price: 130),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Лунго',
-          price: 140),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Доппио',
-          price: 150),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Макиато',
-          price: 160),
-    ],
-    'Кофе с молоком': [
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Латте',
-          price: 170),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Капучино',
-          price: 180),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Флэт Уайт',
-          price: 190),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Мокко',
-          price: 200),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Бреве',
-          price: 210),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Рафф',
-          price: 220),
-    ],
-    'Чай': [
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Зеленый чай',
-          price: 100),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Черный чай',
-          price: 120),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Улун',
-          price: 130),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Пуэр',
-          price: 140),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Холодный чай',
-          price: 150),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Матча',
-          price: 160),
-    ],
-    'Авторские напитки': [
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Ароматное Перо',
-          price: 200),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Кофе Мастерской',
-          price: 220),
-    ],
-    'Десерты': [
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Чизкейк',
-          price: 300),
-      CoffeeItemData(
-          imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
-          name: 'Тирамису',
-          price: 320),
+  final Map<String, List<CoffeeItemData>> _categoryData = {
+  'Черный кофе': [
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Эспрессо',
+        price: 100),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Американо',
+        price: 120),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Ристретто',
+        price: 130),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Лунго',
+        price: 140),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Доппио',
+        price: 150),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Макиато',
+        price: 160),
+  ],
+  'Кофе с молоком': [
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Латте',
+        price: 170),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Капучино',
+        price: 180),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Флэт Уайт',
+        price: 190),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Мокко',
+        price: 200),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Бреве',
+        price: 210),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Рафф',
+        price: 220),
+  ],
+  'Чай': [
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Зеленый чай',
+        price: 100),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Черный чай',
+        price: 120),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Улун',
+        price: 130),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Пуэр',
+        price: 140),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Холодный чай',
+        price: 150),
+  ],
+  'Авторские напитки': [
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Ароматное Перо',
+        price: 200),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Кофе Мастерской',
+        price: 220),
+    CoffeeItemData(
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/drinks-and-beverage-containers/100/08-512.png',
+        name: 'Вампир',
+        price: 220),
+  ],
+  'Десерты': [
+    CoffeeItemData(
+        imageUrl: 'https://cdn-icons-png.flaticon.com/256/76/76257.png',
+        name: 'Чизкейк',
+        price: 300),
+    CoffeeItemData(
+        imageUrl: 'https://cdn-icons-png.flaticon.com/256/76/76257.png',
+        name: 'Тирамису',
+        price: 320),
+    CoffeeItemData(
+        imageUrl: 'https://cdn-icons-png.flaticon.com/256/76/76257.png',
+        name: 'Безе',
+        price: 340),
+    CoffeeItemData(
+        imageUrl: 'https://cdn-icons-png.flaticon.com/256/76/76257.png',
+        name: 'Панна котта',
+        price: 400),
     ],
   };
 
   String _activeCategory = 'Черный кофе';
 
-void _scrollToCategory(String category) {
-  final keyContext = _categoryKeys[category]?.currentContext;
-  if (keyContext != null) {
-    _scrollController.removeListener(_onScroll);
-    Scrollable.ensureVisible(keyContext, duration: const Duration(seconds: 1), curve: Curves.easeInQuad).then((_) {
-      _scrollController.addListener(_onScroll);
-    });
-    setState(() {
-      _activeCategory = category;
-    });
+  void _scrollToCategory(String category) {
+    final keyContext = _categoryKeys[category]?.currentContext;
+    if (keyContext != null) {
+      _scrollController.removeListener(_onScroll);
+      Scrollable.ensureVisible(keyContext, duration: const Duration(seconds: 1), curve: Curves.easeInQuad, alignmentPolicy: ScrollPositionAlignmentPolicy.explicit).then((_) {
+        _scrollController.addListener(_onScroll);
+      });
+      setState(() {
+        _activeCategory = category;
+      });
+    }
   }
-}
 
   void _onScroll() {
     double minDistance = double.infinity;
@@ -147,7 +156,7 @@ void _scrollToCategory(String category) {
         if (renderObject is RenderSliverToBoxAdapter) {
           final box = renderObject.child as RenderBox;
             final position = box.localToGlobal(Offset.zero).dy;
-            final distance = (position - kToolbarHeight * 2.3).abs();
+            final distance = (position - kToolbarHeight * 2.0).abs();
             if (distance < minDistance) {
               minDistance = distance;
               closestCategory = category;
@@ -162,7 +171,7 @@ void _scrollToCategory(String category) {
       _categoryScrollController.animateTo(
         index * 100.0,
         duration: const Duration(milliseconds: 200),
-        curve: Curves.easeInOut,
+        curve: Curves.easeInQuad,
       );
     });
   }
@@ -185,9 +194,11 @@ void _scrollToCategory(String category) {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Theme.of(context).appBarTheme.surfaceTintColor,
         title: PreferredSize(
-          preferredSize: const Size.fromHeight(48.0),
+          preferredSize: const Size.fromHeight(40.0),
           child: Container(
+            height: 40,
             alignment: Alignment.center,
             child: SizedBox(
               height: 36.0,
@@ -199,22 +210,37 @@ void _scrollToCategory(String category) {
                   String category = _categoryKeys.keys.elementAt(index);
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: GestureDetector(
-                      onTap: () {
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        elevation: WidgetStateProperty.all<double>(0),
+                        backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                          (_) {
+                            if (category == _activeCategory) {
+                              return const Color.fromARGB(199, 63, 4, 4);
+                            }
+                            return Colors.grey.shade200;
+                          },
+                        ),
+                      ),
+                      onPressed: () {
                         _scrollToCategory(category);
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           _categoryScrollController.animateTo(
-                            index * 100.0,
+                            index * 150,
                             duration: const Duration(milliseconds: 500),
                             curve: Curves.easeInOut,
                           );
                         });
                       },
-                      child: Chip(
-                        label: Text(category),
+                      child: Text(
+                        category,
+                        style: TextStyle(
+                          color: category == _activeCategory ? Colors.white : Colors.black,
+                          fontFamily: '.SF UI Display',
+                        ),
                       ),
                     ),
-                  );
+                    );
                 },
               ),
             ),
@@ -230,8 +256,7 @@ void _scrollToCategory(String category) {
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
               child: CoffeeCategory(
                 title: category,
-                items: _categoryData[category]!
-                ,
+                items: _categoryData[category]!,
               ),
             ),
           );
@@ -240,4 +265,3 @@ void _scrollToCategory(String category) {
     );
   }
 }
-

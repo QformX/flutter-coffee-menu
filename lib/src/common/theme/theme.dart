@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
 
 final ThemeData appTheme = ThemeData(
-  primaryColor: Colors.blue, // Основной цвет
-  fontFamily: 'Roboto', // Шрифт
+  fontFamily: 'Arial',
   buttonTheme: ButtonThemeData(
-    buttonColor: Colors.blue, // Цвет кнопок
-    textTheme: ButtonTextTheme.primary, // Тема текста кнопок
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)), // Форма кнопок
+    buttonColor: Colors.blue,
+    textTheme: ButtonTextTheme.primary,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
   ),
+  appBarTheme: AppBarTheme(
+    surfaceTintColor: Colors.black.withOpacity(0.0)
+  ),
+  iconButtonTheme: IconButtonThemeData(
+    style: ButtonStyle(
+      iconColor: WidgetStateProperty.all(Colors.white),
+      iconSize: WidgetStateProperty.all(9.0),
+      backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+        (_) {
+            return const Color.fromARGB(199, 63, 4, 4);
+        },
+      ),
+    )
+  )
 );
