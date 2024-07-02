@@ -218,7 +218,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             if (category == _activeCategory) {
                               return const Color.fromARGB(199, 63, 4, 4);
                             }
-                            return Colors.grey.shade200;
+                            return Colors.white;
                           },
                         ),
                       ),

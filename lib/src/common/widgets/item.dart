@@ -15,6 +15,8 @@ class _CoffeeItemState extends State<CoffeeItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0.0,
+      color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
