@@ -127,7 +127,7 @@ void _scrollToCategory(String category) {
   final keyContext = _categoryKeys[category]?.currentContext;
   if (keyContext != null) {
     _scrollController.removeListener(_onScroll);
-    Scrollable.ensureVisible(keyContext, duration: const Duration(seconds: 1), curve: Curves.easeInOut).then((_) {
+    Scrollable.ensureVisible(keyContext, duration: const Duration(seconds: 1), curve: Curves.easeInQuad).then((_) {
       _scrollController.addListener(_onScroll);
     });
     setState(() {
