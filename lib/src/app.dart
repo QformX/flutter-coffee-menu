@@ -39,14 +39,12 @@ class _MenuScreenState extends State<MenuScreen> {
         final renderObject = keyContext.findRenderObject();
         if (renderObject is RenderSliverToBoxAdapter) {
           final box = renderObject.child as RenderBox;
-          if (box != null) {
             final position = box.localToGlobal(Offset.zero).dy;
             final distance = (position - kToolbarHeight).abs();
             if (distance < minDistance) {
               minDistance = distance;
               closestCategory = category;
             }
-          }
         }
       }
     });
