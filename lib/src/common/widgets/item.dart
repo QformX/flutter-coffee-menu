@@ -22,9 +22,10 @@ class _CoffeeItemState extends State<CoffeeItem> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network(
-              widget.itemData.imageUrl,
+            Image(
+              image: AssetImage(widget.itemData.imageUrl),
               height: 100,
+              width: 100,
               fit: BoxFit.contain,
             ),
             const SizedBox(height: 8),
