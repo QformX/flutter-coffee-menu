@@ -14,11 +14,6 @@ final ThemeData appTheme = ThemeData(
     style: ButtonStyle(
       iconColor: WidgetStateProperty.all(Colors.white),
       iconSize: WidgetStateProperty.all(9.0),
-      backgroundColor: WidgetStateProperty.resolveWith<Color?>(
-        (_) {
-            return const Color.fromARGB(199, 63, 4, 4);
-        },
-      ),
     )
   )
 );

@@ -27,9 +27,10 @@ class _CoffeeItemState extends State<CoffeeItem> {
               height: 100,
               fit: BoxFit.contain,
             ),
-            const SizedBox(height: 8),
-            Text(widget.itemData.name),
-            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0), 
+              child: Text(widget.itemData.name),
+              ),
             SizedBox(
             height: 24.0,
             width: 116,
@@ -58,7 +59,12 @@ class _CoffeeItemState extends State<CoffeeItem> {
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(
+                      Container(
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color.fromARGB(199, 63, 4, 4)
+                            ),
+                        child: IconButton(
                         style: Theme.of(context).iconButtonTheme.style,
                         icon: const Icon(Icons.remove),
                         onPressed: () {
@@ -71,11 +77,17 @@ class _CoffeeItemState extends State<CoffeeItem> {
                           });
                         },
                       ),
+                      ),
                       SizedBox(
-                        width: 25,
+                        width: 30,
                         child: Text('$_quantity', textAlign: TextAlign.center),
                       ),
-                      IconButton(
+                      Container(
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color.fromARGB(199, 63, 4, 4)
+                            ),
+                        child: IconButton(
                         style: Theme.of(context).iconButtonTheme.style,
                         icon: const Icon(Icons.add),
                         onPressed: () {
@@ -86,6 +98,7 @@ class _CoffeeItemState extends State<CoffeeItem> {
                           });
                         },
                       ),
+                      )
                     ],
                 )
             ),
