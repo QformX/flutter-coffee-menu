@@ -25,7 +25,6 @@ class _CoffeeItemState extends State<CoffeeItem> {
             Image(
               image: AssetImage(widget.itemData.imageUrl),
               height: 100,
-              width: 100,
               fit: BoxFit.contain,
             ),
             const SizedBox(height: 8),

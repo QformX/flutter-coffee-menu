@@ -23,13 +23,18 @@ class _MenuScreenState extends State<MenuScreen> {
   final Map<String, List<CoffeeItemData>> _categoryData = categoryData;
 
   String _activeCategory = categoryData.keys.first;
+  bool _isAnimating = false;
 
   void _scrollToCategory(String category) {
+    if (_isAnimating) return;
+
     final keyContext = _categoryKeys[category]?.currentContext;
     if (keyContext != null) {
+      _isAnimating = true;
       _scrollController.removeListener(_onScroll);
-      Scrollable.ensureVisible(keyContext, duration: const Duration(seconds: 1), curve: Curves.easeInQuad, alignmentPolicy: ScrollPositionAlignmentPolicy.explicit).then((_) {
+      Scrollable.ensureVisible(keyContext, duration: const Duration(milliseconds: 300), curve: Curves.easeInQuad, alignmentPolicy: ScrollPositionAlignmentPolicy.explicit).then((_) {
         _scrollController.addListener(_onScroll);
+        _isAnimating = false;
       });
       setState(() {
         _activeCategory = category;
