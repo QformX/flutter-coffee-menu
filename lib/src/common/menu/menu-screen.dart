@@ -32,7 +32,7 @@ class _MenuScreenState extends State<MenuScreen> {
     if (keyContext != null) {
       _isAnimating = true;
       _scrollController.removeListener(_onScroll);
-      Scrollable.ensureVisible(keyContext, duration: const Duration(milliseconds: 300), curve: Curves.easeInQuad, alignmentPolicy: ScrollPositionAlignmentPolicy.explicit).then((_) {
+      Scrollable.ensureVisible(keyContext, duration: const Duration(milliseconds: 300), curve: Curves.linear, alignmentPolicy: ScrollPositionAlignmentPolicy.explicit).then((_) {
         _scrollController.addListener(_onScroll);
         _isAnimating = false;
       });
@@ -68,7 +68,7 @@ class _MenuScreenState extends State<MenuScreen> {
       _categoryScrollController.animateTo(
         index * 150.0,
         duration: const Duration(milliseconds: 200),
-        curve: Curves.easeInQuad,
+        curve: Curves.linear,
       );
     });
   }
