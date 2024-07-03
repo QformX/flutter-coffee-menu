@@ -66,7 +66,7 @@ class _MenuScreenState extends State<MenuScreen> {
       _activeCategory = closestCategory;
       final index = _categoryKeys.keys.toList().indexOf(closestCategory);
       _categoryScrollController.animateTo(
-        index * 100.0,
+        index * 150.0,
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInQuad,
       );
