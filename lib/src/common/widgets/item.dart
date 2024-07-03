@@ -32,8 +32,7 @@ class _CoffeeItemState extends State<CoffeeItem> {
               child: Text(widget.itemData.name),
               ),
             SizedBox(
-            height: 24.0,
-            width: 116,
+              height: 24,
             child: _quantity == 0
                 ? ElevatedButton(
                   style: ButtonStyle(
@@ -49,6 +48,7 @@ class _CoffeeItemState extends State<CoffeeItem> {
                       });
                     },
                     child: Text(
+                      textAlign: TextAlign.center,
                       '${widget.itemData.price} руб',
                       style: const TextStyle(
                           color: Colors.white,
@@ -56,7 +56,9 @@ class _CoffeeItemState extends State<CoffeeItem> {
                         ),
                       ),
                   )
-                : Row(
+                : Container(
+                  margin: EdgeInsets.zero,
+                  child: Row (
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
@@ -65,6 +67,7 @@ class _CoffeeItemState extends State<CoffeeItem> {
                             color: Color.fromARGB(199, 63, 4, 4)
                             ),
                         child: IconButton(
+                        highlightColor: const Color.fromARGB(0, 255, 255, 255),
                         style: Theme.of(context).iconButtonTheme.style,
                         icon: const Icon(Icons.remove),
                         onPressed: () {
@@ -88,6 +91,7 @@ class _CoffeeItemState extends State<CoffeeItem> {
                             color: Color.fromARGB(199, 63, 4, 4)
                             ),
                         child: IconButton(
+                        highlightColor: const Color.fromARGB(0, 255, 255, 255),
                         style: Theme.of(context).iconButtonTheme.style,
                         icon: const Icon(Icons.add),
                         onPressed: () {
@@ -98,8 +102,9 @@ class _CoffeeItemState extends State<CoffeeItem> {
                           });
                         },
                       ),
-                      )
+                      ),
                     ],
+                  )
                 )
             ),
           ],
